@@ -12,8 +12,16 @@ public class HelloAppEngineApplication {
 		SpringApplication.run(HelloAppEngineApplication.class, args);
 	}
 
-    @GetMapping("/")
+    @RequestMapping("/")
     public String hello() {
         return "Hello Spring Boot!";
     }
+    
+	@RequestMapping("/get")
+	public String get(@RequestParam("name") String value) {
+		System.out.println(">>>>>>>>>>> @RequestParam = " + value);
+
+		return value;
+	}
+    
 }

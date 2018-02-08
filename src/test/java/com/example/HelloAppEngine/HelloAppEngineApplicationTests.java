@@ -28,15 +28,21 @@ public class HelloAppEngineApplicationTests {
 
 	@Test
 	public void contextLoads() {
-		System.out.println(">>>>>>Testing: " + getMethodName());
+		System.out.println(">>>>>>Testing<<<<<<: " + getMethodName());
 	}
 
 	@Test
 	public void getHello() throws Exception {
-		System.out.println(">>>>>Testing: " + getMethodName());
+		System.out.println(">>>>>Testing<<<<<<: " + getMethodName());
 		mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.APPLICATION_JSON))
 		.andExpect(status().isOk())
 		.andExpect(content().string(equalTo("Hello Spring Boot!")));
 	}
+    
+    @Test
+    public void getParam() throws Exception {
+		System.out.println(">>>>>Testing<<<<<<: " + getMethodName());
+        mvc.perform(MockMvcRequestBuilders.get("/get?name=HelloWorld").accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andExpect(content().string(equalTo("HelloWorld")));
+    }
 
 }
